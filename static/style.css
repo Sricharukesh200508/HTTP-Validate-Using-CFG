@@ -1,0 +1,65 @@
+/* General Styles */
+:root { --primary-color: #4f46e5; --primary-hover: #4338ca; --text-dark: #111827; --text-light: #4b5563; --border-color: #d1d5db; --bg-light: #f9fafb; --success-bg: #f0fdf4; --success-text: #16a34a; --error-bg: #fef2f2; --error-text: #ef4444; }
+body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #f0f4f8; color: #333; margin: 0; }
+
+/* AUTH (LOGIN/SIGNUP) STYLES */
+.auth-wrapper { display: flex; width: 100vw; height: 100vh; overflow: hidden; }
+.auth-decorative-panel { flex: 1; background: linear-gradient(45deg, #4f46e5, #7c3aed); color: white; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 3rem; }
+.auth-decorative-panel h2 { font-size: 2.5rem; margin-bottom: 1rem; }
+.auth-decorative-panel p { font-size: 1.1rem; max-width: 400px; opacity: 0.8; }
+.auth-form-panel { flex: 1; background-color: #ffffff; display: flex; justify-content: center; align-items: center; padding: 2rem; }
+.auth-form { width: 100%; max-width: 380px; }
+.auth-form h3 { font-size: 2rem; color: #1f2937; margin-bottom: 0.5rem; }
+.auth-form p { color: #6b7280; margin-bottom: 2.5rem; }
+.input-group { margin-bottom: 1.5rem; text-align: left; }
+.input-group label { display: block; margin-bottom: 0.5rem; font-weight: 500; color: #374151; }
+.input-group input { width: 100%; padding: 0.75rem 0.5rem; border: none; border-bottom: 2px solid #d1d5db; font-size: 1rem; transition: border-color 0.2s; box-sizing: border-box; }
+.input-group input:focus { outline: none; border-color: #4f46e5; }
+.auth-form button { width: 100%; padding: 0.8rem; border: none; border-radius: 8px; background-color: #4f46e5; color: white; font-size: 1rem; font-weight: 600; cursor: pointer; transition: background-color 0.2s; }
+.auth-form button:hover { background-color: #4338ca; }
+.auth-switch { margin-top: 1.5rem; text-align: center; font-size: 0.9rem; color: #6b7280; }
+.auth-switch a { color: #4f46e5; text-decoration: none; font-weight: 500; }
+.auth-switch a:hover { text-decoration: underline; }
+.flash { padding: 1rem; margin-bottom: 1.5rem; border-radius: 8px; font-weight: 500; }
+.flash.error { background-color: #fee2e2; color: #991b1b; }
+.flash.success { background-color: #dcfce7; color: #166534; }
+
+/* DASHBOARD STYLES */
+.navbar { background-color: #ffffff; padding: 1rem 2rem; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; justify-content: space-between; align-items: center; }
+.nav-brand { font-size: 1.5rem; font-weight: bold; color: #4f46e5; }
+.nav-user { display: flex; align-items: center; gap: 1rem; }
+.logout-btn { background-color: #ef4444; color: white; padding: 0.5rem 1rem; border-radius: 8px; text-decoration: none; font-weight: 500; transition: background-color 0.2s; }
+.logout-btn:hover { background-color: #dc2626; }
+.container { padding: 2rem; max-width: 900px; margin: 2rem auto; background-color: #ffffff; border-radius: 16px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); text-align: center; }
+h1 { font-size: 2.75rem; color: #111827; margin-bottom: 0.75rem; }
+.container > p { color: var(--text-light); font-size: 1.1rem; margin-bottom: 2.5rem; }
+.code-snippet { background-color: #eef2ff; padding: 0.2rem 0.6rem; border-radius: 6px; font-family: monospace; font-size: 1rem; color: var(--primary-color); }
+.request-input { width: 100%; min-height: 100px; padding: 1rem; border: 1px solid var(--border-color); border-radius: 12px; font-family: monospace; font-size: 1.15rem; box-sizing: border-box; margin-bottom: 1.5rem; resize: vertical; transition: border-color 0.2s, box-shadow 0.2s; }
+.request-input:focus { outline: none; border-color: var(--primary-color); box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.15); }
+.container button { width: 100%; padding: 1rem 2rem; border: none; border-radius: 12px; background-color: var(--primary-color); color: white; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: background-color 0.2s, transform 0.2s; }
+.container button:hover { background-color: var(--primary-hover); transform: translateY(-2px); }
+.result { margin-top: 2rem; padding: 1rem 1.5rem; border-radius: 12px; font-weight: 600; font-size: 1.1rem; text-align: left; border-left: 5px solid; animation: fadeIn 0.5s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.result.success { background-color: var(--success-bg); color: var(--success-text); border-color: var(--success-text); }
+.result.error { background-color: var(--error-bg); color: var(--error-text); border-color: var(--error-text); }
+.history-container { margin-top: 3rem; text-align: left; }
+.history-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+.history-header h2 { font-size: 1.75rem; color: #374151; }
+.button-group { display: flex; gap: 0.75rem; }
+.download-btn { display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; border: none; border-radius: 8px; text-decoration: none; font-weight: 600; color: white; transition: transform 0.2s, background-color 0.2s; font-size: 0.9rem; }
+.download-btn:hover { transform: translateY(-2px); }
+.download-btn svg { width: 16px; height: 16px; }
+.download-btn.csv { background-color: #16a34a; }
+.download-btn.csv:hover { background-color: #15803d; }
+.download-btn.pdf { background-color: #dc2626; }
+.download-btn.pdf:hover { background-color: #b91c1c; }
+.table-wrapper { border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; }
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 1rem; border-bottom: 1px solid #e5e7eb; }
+thead { background-color: var(--bg-light); }
+th { font-weight: 600; color: #374151; text-align: left; }
+tbody tr:last-child td { border-bottom: none; }
+.request-cell { font-family: monospace; font-weight: 600; color: #3730a3; }
+tr.success { background-color: var(--success-bg); }
+tr.error { background-color: var(--error-bg); }
+.empty-history { text-align: center; color: var(--text-light); padding: 2.5rem; font-style: italic; }

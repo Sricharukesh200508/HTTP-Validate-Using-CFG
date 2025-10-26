@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - HTTP Validator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">HTTP Validator</div>
+        <div class="nav-user">
+            <span>Welcome, <strong>{{ current_user.username }}</strong>!</span>
+            <a href="{{ url_for('logout') }}" class="logout-btn">Logout</a>
+        </div>
+    </nav>
+    <main class="container">
+        <h1>HTTP Request Validator</h1>
+        <p>Enter a request line like <code class="code-snippet">GET /path HTTP/1.1</code> to validate its syntax.</p>
+        <form action="{{ url_for('dashboard') }}" method="post">
+            <textarea name="request_data" class="request-input" placeholder="GET /index.html HTTP/1.1">{{ request_data or '' }}</textarea>
+            <button type="submit">Validate</button>
+        </form>
+
+        {% if result %}
+            <div class="result {{ status }}">
+                {{ result }}
+            </div>
+        {% endif %}
+
+        <div class="history-container">
+            <div class="history-header">
+                <h2>Validation History</h2>
+                <div class="button-group">
+                    <a href="/download/csv" class="download-btn csv">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path d="M10.75 2.75a.75.75 0 0 0-1.5 0v8.614L6.295 8.235a.75.75 0 1 0-1.09 1.03l4.25 4.5a.75.75 0 0 0 1.09 0l4.25-4.5a.75.75 0 0 0-1.09-1.03l-2.955 3.129V2.75Z" /><path d="M3.5 12.75a.75.75 0 0 0-1.5 0v2.5A2.75 2.75 0 0 0 4.75 18h10.5A2.75 2.75 0 0 0 18 15.25v-2.5a.75.75 0 0 0-1.5 0v2.5c0 .69-.56 1.25-1.25 1.25H4.75c-.69 0-1.25-.56-1.25-1.25v-2.5Z" /></svg>
+                        CSV
+                    </a>
+                    <a href="/download/pdf" class="download-btn pdf">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path d="M10.75 2.75a.75.75 0 0 0-1.5 0v8.614L6.295 8.235a.75.75 0 1 0-1.09 1.03l4.25 4.5a.75.75 0 0 0 1.09 0l4.25-4.5a.75.75 0 0 0-1.09-1.03l-2.955 3.129V2.75Z" /><path d="M3.5 12.75a.75.75 0 0 0-1.5 0v2.5A2.75 2.75 0 0 0 4.75 18h10.5A2.75 2.75 0 0 0 18 15.25v-2.5a.75.75 0 0 0-1.5 0v2.5c0 .69-.56 1.25-1.25 1.25H4.75c-.69 0-1.25-.56-1.25-1.25v-2.5Z" /></svg>
+                        PDF
+                    </a>
+                </div>
+            </div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Request Line</th>
+                            <th>Result</th>
+                            <th>Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in history %}
+                            <tr class="{{ item.status }}">
+                                <td class="request-cell">{{ item.request }}</td>
+                                <td>{{ item.result }}</td>
+                                <td>{{ item.time }}</td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="3" class="empty-history">
+                                    No history yet. Validate a request to see it here!
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
